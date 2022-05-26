@@ -1,0 +1,1201 @@
+{
+	"info": {
+		"_postman_id": "e6e87cb6-adb9-4718-a141-cf378eb2d03d",
+		"name": "Reachdesk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "Engages",
+					"item": [
+						{
+							"name": "Bulk Create",
+							"_postman_id": "5e314d89-48a1-427a-8cba-582546574e80",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"request_id\": \"{{$randomUUID}}\",\n    \"engages\": [\n        {\n            \"first_name\": \"Diego\",\n            \"last_name\": \"Silva\",\n            \"email\": \"diego@reachdesk.com\",\n            \"company_name\": \"Reachdesk\",\n            \"role\": \"\",\n            \"street_address_1\": \"\",\n            \"street_address_2\": \"\",\n            \"state\": \"\",\n            \"city\": \"\",\n            \"zipcode\": \"\",\n            \"provider\": null,\n            \"provider_contact_type\": null,\n            \"provider_contact_id\": null,\n            \"phone_number\": \"\",\n            \"campaign_id\": 269,\n            \"email_subject\": \"Happy Birthday {{recipient_first_name}}!\",\n            \"email_body\": {\n                \"ops\": [\n                    {\n                        \"insert\": \"Hello \"\n                    },\n                    {\n                        \"insert\": {\n                            \"template\": {\n                                \"value\": \"recipient_first_name\",\n                                \"label\": \"Recipient's First Name\"\n                            }\n                        }\n                    },\n                    {\n                        \"insert\": \"!\\n\\nHere is a little gift for you!\\n\\nRegards,\\n\"\n                    },\n                    {\n                        \"insert\": {\n                            \"template\": {\n                                \"value\": \"sender_name\",\n                                \"label\": \"Sender's Name\"\n                            }\n                        }\n                    },\n                    {\n                        \"insert\": \"\\n\"\n                    }\n                ]\n            },\n            \"send_email\": true,\n            \"gift_card_amount\": 10,\n            \"engage_items\": [],\n            \"note_body\": {},\n            \"source\": \"single_import\",\n            \"marketplace_engage_variable_values_attributes\": [],\n            \"confirm_address\": false,\n            \"payment_currency\": null\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/engages/bulk_create"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Engage",
+							"_postman_id": "adcd5e73-6f56-4195-b2cb-39b20594371a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/engages/{id}"
+							},
+							"response": []
+						},
+						{
+							"name": "Undo Rejection",
+							"_postman_id": "eb4c82a1-38dc-4a5c-ad50-9f2fc906d33e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/engages/{id}/undo_rejection"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "95a25b90-3a84-457f-bd1d-bd5a5581630d",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Top Up Requests",
+					"item": [
+						{
+							"name": "Create",
+							"_postman_id": "ba73996b-1f03-411c-a665-e4da5f040a94",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"billing_entity_id\": \"123-456-789\",\n    \"amount\": \"10000000\",\n    \"currency\": \"USD\",\n    \"payment_method\": \"card\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/top_up_requests"
+							},
+							"response": []
+						},
+						{
+							"name": "Settings",
+							"_postman_id": "173dbe08-d432-40a6-af86-7dbade4b3924",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/top_up_requests/settings"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "f5915c09-53ad-42db-afe4-8f2e6f3aa93a",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Index",
+							"_postman_id": "30287262-1ae4-4b5c-88b0-5f9322c73ca8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Get User",
+							"_postman_id": "4afa2d44-03b0-4117-b7b8-b6ee3e65effc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/users/{id}"
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"_postman_id": "34040097-a01e-4875-a481-2d8ec6ac8995",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"admin\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"_postman_id": "1288579e-c61e-411a-ba40-32ebb6c91713",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"role\": \"admin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/users/{id}"
+							},
+							"response": []
+						},
+						{
+							"name": "User Settings (Signed In User only)",
+							"_postman_id": "b5d8278a-0655-4dc6-a215-755952db193b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"preferred_currency\": \"USD\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/user_settings"
+							},
+							"response": []
+						},
+						{
+							"name": "Credit",
+							"_postman_id": "fb7c030d-3e78-48d2-80bb-e4029b6f6827",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"request_id\": \"{{$randomUUID}}\",\n    \"amount\": 10,\n    \"adjust_operation\": \"credit\",\n    \"currency\": \"GBP\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/users/{id}/credit"
+							},
+							"response": []
+						},
+						{
+							"name": "Credits (Signed In User)",
+							"_postman_id": "b8df39dd-fe54-4b55-8ec1-83dc5543580f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/users/credits"
+							},
+							"response": []
+						},
+						{
+							"name": "Signed In User",
+							"_postman_id": "659a2c70-0912-4e51-820c-a24a6609028d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/users/signed_in_user"
+							},
+							"response": []
+						},
+						{
+							"name": "Deactivate",
+							"_postman_id": "8ef36875-c12b-483f-9fb4-633d5637db96",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/users/{id}/deactivate"
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivate",
+							"_postman_id": "7396d17f-f9ee-45e9-9cb7-0af4cf0cd444",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/users/{id}/reactivate"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "6346d849-ab59-48a6-8ad8-215e08f70bbe",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Organizations",
+					"item": [
+						{
+							"name": "Balances",
+							"_postman_id": "87d1343a-025f-4302-9e7b-29921652251f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/organizations/balances"
+							},
+							"response": []
+						},
+						{
+							"name": "Branding",
+							"_postman_id": "5ae3d9e2-9598-4da5-9d22-3378874753ed",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/organizations/branding"
+							},
+							"response": []
+						},
+						{
+							"name": "Billing Entities",
+							"_postman_id": "3dc8a567-faa7-4916-bc3f-23f1242be5f3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/organizations/billing_entities"
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"_postman_id": "c8e9d360-555e-49a3-ba26-dfc457bf5a14",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"branding_logo_id\": 43,\n    \"branding_primary_color\": \"#691f74\",\n    \"branding_secondary_color\": \"#ffffff\",\n    \"import_contacts\": [\"salesloft\"],\n    \"preferences_url\": \"https://preferences.com\",\n    \"terms_and_conditions_url\": \"https://terms-and-conditions.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/organizations"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "1a37273a-3fc0-412d-a122-df68d8ccc3e4",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Teams",
+					"item": [
+						{
+							"name": "Index",
+							"_postman_id": "cb8481f0-f5ef-4822-b029-2775d3d6f78f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/teams"
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"_postman_id": "70bccdb4-c7f9-4143-bd6d-2cb292912347",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/teams/{id}"
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"_postman_id": "07d41468-69df-4858-ac7a-c012df96f753",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"team\": {\n        \"name\": \"Engineers\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/teams/20"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Budget",
+							"_postman_id": "f4ac5535-d4e9-4cd7-9b6b-ce559ff38a69",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"team\": {\n        \"budgets_attributes\": [\n            {\n                \"id\": 179,\n                \"amount\": 0.0,\n                \"rollover\": true\n            }\n        ]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/teams/20/budget"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"_postman_id": "3d9834cd-eebe-41af-85b1-3ce95114a599",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/teams/41"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "ce93fb14-c867-4ef3-970c-646a083d731e",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Items",
+					"item": [
+						{
+							"name": "Show",
+							"_postman_id": "c05ba27b-0081-4fe9-801e-302c962608f4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/items/{id}"
+							},
+							"response": []
+						},
+						{
+							"name": "Edit",
+							"_postman_id": "ce307040-eaad-4344-a63c-690d93e3efa4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"request_id\": \"{{$randomUUID}}\",\n    \"item\": {\n        \"description\": \"new desc\",\n        \"item_value\": 9.83,\n        \"item_value_currency\": \"EUR\",\n        \"manufacturing_country_id\": 88,\n        \"name\": \"Updated Item\",\n        \"tariff_code\": 1234512341\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/items/{id}"
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"_postman_id": "66e9cd36-4719-42be-9832-df6d8dff6e5f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"request_id\": \"{{$randomUUID}}\",\n    \"item\": {\n        \"name\": \"Test Item from API\",\n        \"description\": \"foo description\",\n        \"packaging\": false,\n        \"packaging_type\": null,\n        \"promotional_item\": false,\n        \"accepted_terms\": true,\n        \"item_value\": 5.91,\n        \"item_value_currency\": \"USD\",\n        \"manufacturing_country_id\": 1,\n        \"tariff_code\": 1234567890\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/items"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "d2c2f452-cd88-4912-a7bc-3b775a59fbb0",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Ship Notices",
+					"item": [
+						{
+							"name": "Index",
+							"_postman_id": "cc6f0595-ee01-423f-97ba-5b6ebb513bfc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/api/v1/ship_notices"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "3a451472-2e6a-4398-bb17-71871e70d8eb",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "API Tokens",
+					"item": [
+						{
+							"name": "Index",
+							"_postman_id": "1d5b6443-4ce1-41b8-852a-ab34112cc50c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": "{{base_url}}/api/v1/api_tokens"
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"_postman_id": "877db4e8-d52e-4a98-a444-a5deebfeff08",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"api_token\": {\n        \"description\": \"Diego Postman Test\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/api_tokens"
+							},
+							"response": []
+						},
+						{
+							"name": "Destroy",
+							"_postman_id": "4175636c-e089-4320-81a0-e42d62f6c8f7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": "{{base_url}}/api/v1/api_tokens/{id}"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "72243c5e-18bf-442b-8222-fd7ea1e3b1c7",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Domains",
+					"item": [
+						{
+							"name": "Index",
+							"_postman_id": "b0506e11-da2b-49b6-bce4-c1828a6468f1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": "{{base_url}}/api/v1/domains"
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"_postman_id": "38bd2771-08ab-490b-bb02-6c7e7fa1866d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"postman-test.dev\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/domains"
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"_postman_id": "c27c8183-40b5-4814-9804-e084abb8c7aa",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"active\": \"true\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/domains/{id}"
+							},
+							"response": []
+						},
+						{
+							"name": "Destroy",
+							"_postman_id": "57d42e78-a3c1-4c7f-b6eb-9990362a355e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": "{{base_url}}/api/v1/domains/{id}"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "2b059e0f-c761-4195-bc75-f47cbff3a36b",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "IdP Entity",
+					"item": [
+						{
+							"name": "Index",
+							"_postman_id": "a2406563-41d7-4b49-bd8f-a31698e89ca9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": "{{base_url}}/api/v1/idp_entity"
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"_postman_id": "7d3b5706-5fa0-4b6c-8419-4c9e788060c6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "idp_entity[metadata]",
+											"type": "file",
+											"src": "/Users/diego/Downloads/Reachdesk SSO - Staging - metadata.xml"
+										}
+									],
+									"options": {}
+								},
+								"url": "{{base_url}}/api/v1/idp_entity"
+							},
+							"response": []
+						},
+						{
+							"name": "State",
+							"_postman_id": "95c0330f-1673-455d-b066-b2edcb866b2e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"enabled\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/idp_entity/state"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "2025a877-24ea-403b-a56a-eaea3b090968",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Wallets",
+					"item": [
+						{
+							"name": "New Request",
+							"_postman_id": "8a0cde7d-5415-4391-864f-ad8d23cbd028",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"_postman_id": "1e4982de-63e6-4243-b4a2-4c514d98a018",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/wallets?entity_type=Team&entity_id=1&currency=EUR",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"wallets"
+									],
+									"query": [
+										{
+											"key": "entity_type",
+											"value": "Team",
+											"type": "text"
+										},
+										{
+											"key": "entity_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "EUR",
+											"type": "text"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request Copy",
+							"_postman_id": "22d8b84b-8276-44e9-9b93-6f0790ad87cd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"default_spend_limit\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/wallets/79"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Copy",
+							"_postman_id": "6413729a-0a7c-4248-83e0-9a0df0b1f7ec",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"billing_entity_id\": \"123-456-789\",\n    \"amount\": \"10000000\",\n    \"currency\": \"USD\",\n    \"payment_method\": \"card\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/api/v1/top_up_requests"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "9ce68f50-616b-4b98-beed-6c1ff789c6d3",
+					"_postman_isSubFolder": true
+				}
+			],
+			"_postman_id": "aebae08e-323e-450a-9de6-177956943696",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"if (pm.request.method != 'GET') {",
+							"    const baseUrl = pm.environment.get('base_url');",
+							"    pm.sendRequest(baseUrl, function (err, response) {",
+							"        const csrfToken = response.text().match(/\"csrf-token\" content=\"(.+)\"/)[1];",
+							"        pm.request.addHeader({ key: 'X-CSRF-TOKEN', value: csrfToken});",
+							"    });",
+							"}"
+						],
+						"id": "6e7c3490-2af5-4533-8024-5709a1ad9feb"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						],
+						"id": "ba2166d3-937e-49e4-a450-049722d848e2"
+					}
+				}
+			]
+		},
+		{
+			"name": "v2",
+			"item": [
+				{
+					"name": "Signed in Organization",
+					"_postman_id": "06bea4fe-5c52-4761-9c62-d7ef7c647110",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/v2/organization"
+					},
+					"response": []
+				},
+				{
+					"name": "Trigger Campaign",
+					"_postman_id": "389c80b4-1a6e-4021-bb6c-2e627405ed05",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"request_id\": \"{{$randomUUID}}\",\n    \"recipient\": {\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"diego@reachdesk.com\",\n        \"company_name\": \"Example Ltd.\",\n        \"street_address_1\": \"45 Rockefeller Plaza\",\n        \"street_address_2\": \"5th Floor\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zipcode\": \"10111\",\n        \"country\": \"US\"\n    },\n    \"sender\": \"diego@reachdesk.com\",\n    \"source\": \"postman\",\n    \"payment_currency\": \"USD\",\n    \"approved\": \"auto\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/v2/campaigns/{id}/trigger"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "d46ddca0-7875-4e6e-aaa4-4db1266ed914",
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "{{auth_token}}"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						],
+						"id": "18a3faee-0165-40dd-bf66-9a86c1d53b9d"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						],
+						"id": "21efa96a-95da-4184-9b1a-c7599d487bea"
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				],
+				"id": "0a2a03f1-89ac-4243-9431-1a6019950eed"
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				],
+				"id": "9d1206b3-f087-4ac2-b03c-9bf3960967a3"
+			}
+		}
+	]
+}
